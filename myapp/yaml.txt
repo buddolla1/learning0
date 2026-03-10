@@ -1,0 +1,18 @@
+Key YAML Best Practices:
+Indentation & Whitespace: Use spaces, never tabs. Two spaces per level is standard.
+Structure: Keep files organized by using blank lines to separate sections.
+Comments: Use # to document, especially for complex configurations.
+Data Types & Quoting: Quote strings only when necessary (e.g., if they contain special characters like :). Avoid unnecessary quotes, and prefer single quotes ['example'] over double quotes ["example"].
+File Extension: Use .yaml (preferred) or .yml.
+Lists: Use hyphen-separated lists (e.g., - item).
+Multi-line Strings: Use | for literal blocks (preserves newlines) and > for folded blocks (replaces newlines with spaces).
+Validation: Use tools like yamllint to automatically check for syntax errors.
+Booleans: Use lowercase true and false.
+Avoid Special Chars: Do not start plain scalars with characters like !, @, #, %, &, *, |, >, ,, {, }, [, ], ,, >, ?, ', or ". 
+Organization & Formatting:
+Meaningful Naming: Give keys clear, descriptive names.
+Keep it Simple: Avoid deeply nested structures; break large files into smaller ones.
+Line Length: Keep lines reasonable for readability, generally avoiding overly long lines.
+Ending: Always end files with a newline.
+
+https://medium.com/@lingeshcbz/yaml-the-ultimate-guide-with-examples-and-best-practices-7040f9e389ed

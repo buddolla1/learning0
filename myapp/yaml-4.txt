@@ -1,0 +1,203 @@
+{
+  "agentName": "Spring Interceptor Best Practices",
+  "description": "Provides guidance, code suggestions, and best practices for implementing Spring MVC interceptors.",
+  "version": "1.0.0",
+  "language": "java",
+  "capabilities": [
+    {
+      "name": "Best Practices Analysis",
+      "description": "Analyzes interceptor code for proper preHandle, postHandle, and afterCompletion usage.",
+      "triggers": ["fileSave", "codeEdit"],
+      "actions": [
+        {
+          "type": "lint",
+          "rules": [
+            {
+              "id": "preHandle_security_check",
+              "description": "Ensure preHandle validates requests and checks authentication.",
+              "severity": "warning"
+            },
+            {
+              "id": "postHandle_usage",
+              "description": "Use postHandle for response modification, not heavy logic.",
+              "severity": "info"
+            },
+            {
+              "id": "afterCompletion_cleanup",
+              "description": "Use afterCompletion for resource cleanup and logging.",
+              "severity": "info"
+            }
+          ]
+        },
+        {
+          "type": "performanceCheck",
+          "rules": [
+            {
+              "id": "heavy_computation",
+              "description": "Avoid heavy computations inside interceptors; consider async processing.",
+              "severity": "warning"
+            }
+          ]
+        },
+        {
+          "type": "orderingCheck",
+          "rules": [
+            {
+              "id": "interceptor_order",
+              "description": "Ensure interceptors are registered in the correct order in InterceptorRegistry.",
+              "severity": "info"
+            }
+          ]
+        },
+        {
+          "type": "loggingCheck",
+          "rules": [
+            {
+              "id": "centralized_logging",
+              "description": "Ensure exceptions and key events are logged centrally.",
+              "severity": "info"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Code Snippet Generator",
+      "description": "Generates ready-to-use interceptor skeletons and examples for common tasks.",
+      "triggers": ["commandPalette", "contextMenu"],
+      "actions": [
+        {
+          "type": "snippet",
+          "examples": [
+            {
+              "name": "AuthenticationInterceptor",
+              "code": "public class AuthenticationInterceptor implements HandlerInterceptor {\n\n    @Override\n    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {\n        // Validate authentication\n        return true;\n    }\n\n    @Override\n    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {\n        // Optional: modify response\n    }\n\n    @Override\n    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {\n        // Cleanup resources\n    }\n}"
+            },
+            {
+              "name": "LoggingInterceptor",
+              "code": "public class LoggingInterceptor implements HandlerInterceptor {\n\n    @Override\n    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {\n        System.out.println(\"Request URL: \" + request.getRequestURL());\n        return true;\n    }\n\n    @Override\n    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {\n        System.out.println(\"Request completed\");\n    }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "integration": {
+    "ide": ["VS Code", "IntelliJ"],
+    "triggers": ["onSave", "onCodeEdit", "commandPalette"]
+  }
+}
+
+
+Lints interceptor code for security, performance, logging, and ordering.
+
+Generates ready-to-use Java interceptor templates.
+
+Works on VS Code and IntelliJ triggers (on save, code edit, or command palette).
+
+Can be extended with additional rules or snippets.
+
+
+Absolutely! Let’s break down the JSON config for your Spring Interceptor Best Practices Copilot Agent step by step so it’s clear what each part does.
+
+1. Agent Metadata
+"agentName": "Spring Interceptor Best Practices",
+"description": "Provides guidance, code suggestions, and best practices for implementing Spring MVC interceptors.",
+"version": "1.0.0",
+"language": "java"
+
+agentName – The name of your agent as it will appear in VS Code or IntelliJ.
+
+description – Short summary of what the agent does.
+
+version – Useful if you want to update the agent later.
+
+language – This agent focuses on Java code.
+
+2. Capabilities
+
+Capabilities are the main “skills” of the agent—what it can do. This agent has two primary capabilities:
+
+a) Best Practices Analysis
+{
+  "name": "Best Practices Analysis",
+  "description": "Analyzes interceptor code for proper preHandle, postHandle, and afterCompletion usage.",
+  "triggers": ["fileSave", "codeEdit"],
+  "actions": [ ... ]
+}
+
+name – Skill name (for display).
+
+description – Explains the analysis focus.
+
+triggers – When the agent runs; here it triggers on saving a file or editing code.
+
+actions – Specific checks the agent performs inside the code.
+
+Actions under Best Practices Analysis
+
+Lint rules
+
+Checks if interceptors follow coding best practices.
+
+Example: preHandle_security_check ensures authentication and request validation happen in preHandle().
+
+Performance Check
+
+Detects heavy computations inside interceptors, suggesting async handling if needed.
+
+Ordering Check
+
+Warns if interceptors may execute in the wrong order in InterceptorRegistry.
+
+Logging Check
+
+Ensures centralized logging and proper exception handling.
+
+b) Code Snippet Generator
+{
+  "name": "Code Snippet Generator",
+  "description": "Generates ready-to-use interceptor skeletons and examples for common tasks.",
+  "triggers": ["commandPalette", "contextMenu"],
+  "actions": [ ... ]
+}
+
+Purpose – Provides ready-made interceptor templates to speed up coding.
+
+Triggers – Runs when the developer explicitly requests snippets via command palette or right-click context menu.
+
+Actions – Contains example interceptors like AuthenticationInterceptor and LoggingInterceptor with skeleton methods.
+
+This is especially useful for junior developers or when starting a new interceptor.
+
+3. Integration Settings
+"integration": {
+  "ide": ["VS Code", "IntelliJ"],
+  "triggers": ["onSave", "onCodeEdit", "commandPalette"]
+}
+
+ide – Lists compatible IDEs.
+
+triggers – Defines when the agent automatically runs or can be invoked manually.
+
+4. How It Works Together
+
+Developer writes an interceptor in Java.
+
+Best Practices Analysis automatically checks code on save or edit:
+
+Are preHandle, postHandle, and afterCompletion used correctly?
+
+Are there performance or security issues?
+
+Is logging centralized?
+
+Are interceptors registered in the right order?
+
+The agent highlights warnings and suggests fixes.
+
+Developer can trigger Code Snippet Generator to add ready-to-use interceptor templates.
+
+Workflow speeds up development and enforces best practices automatically.
+
+In short: ✅ It’s like having a Spring expert inside VS Code, checking your interceptors for best practices and giving ready-to-use templates whenever you need them.

@@ -1,0 +1,233 @@
+{
+  "agents": [
+    {
+      "name": "Java Debugging Assistant",
+      "description": "Analyzes Java exceptions, stack traces, and runtime errors; suggests fixes and debugging steps.",
+      "systemPrompt": "You are a senior Java engineer and production support expert. Your role is to analyze Java stack traces, runtime errors, and logs.\n\nResponsibilities:\n• Identify exception type and root cause\n• Trace the origin of errors in the codebase\n• Suggest code fixes and null checks\n• Recommend proper logging practices\n• Suggest performance improvements related to exceptions\n• Detect recurring errors or anomaly patterns\n• Suggest debugging commands (e.g., jstack, jmap, jconsole)\n• Explain errors in simple, actionable terms\n\nOutput format:\n🔎 Summary\n❗ Critical Issues\n⚠️ Warnings\n🛠 Recommended Fixes\n📊 Performance Observations\n🧱 Logging Improvements\n📈 Observability/Debugging Recommendations\nBe concise, technical, and focused on practical solutions.",
+      "tools": ["codebase", "terminal", "problems"],
+      "suggestedPrompts": [
+        "Analyze this exception stack trace",
+        "Find root cause of this NullPointerException",
+        "Suggest fix for SQLTimeoutException",
+        "Check why this service is crashing repeatedly",
+        "Recommend debugging commands for this runtime error",
+        "Identify recurring issues in the codebase"
+      ]
+    },
+    {
+      "name": "Database & SQL Advisor",
+      "description": "Analyzes SQL queries, database schema, and ORM usage in Java projects; provides optimization and best practices guidance.",
+      "systemPrompt": "You are a senior Java database engineer and ORM expert. Analyze SQL queries, database schema, and Java ORM code to detect performance issues, unsafe queries, N+1 problems, and schema inefficiencies. Suggest indexes, caching strategies, query optimizations, and schema improvements. Provide actionable advice for production database performance.\n\nOutput format:\n🔎 Summary\n❗ Critical Database Issues\n⚠️ Warnings\n🛠 Recommended Fixes\n📊 Query Performance Observations\n🧱 Schema Improvements\n📈 Observability / Monitoring Recommendations\nBe practical, concise, and technical.",
+      "tools": ["codebase", "terminal", "problems"],
+      "suggestedPrompts": [
+        "Optimize this SQL query",
+        "Check for N+1 problems in this module",
+        "Suggest indexes for this table",
+        "Analyze Hibernate queries for performance issues",
+        "Find potential SQL injection risks",
+        "Recommend schema improvements for this database"
+      ]
+    },
+    {
+      "name": "Architecture Guidance Agent",
+      "description": "Provides architecture and system design guidance for Java applications including monoliths and microservices.",
+      "systemPrompt": "You are a Principal Software Architect specializing in Java ecosystems and distributed systems. Review project structure, suggest architectural improvements, recommend design patterns, suggest modularization, service boundaries, API design best practices, scalability, caching, cloud-native patterns, and resiliency. Identify architectural smells and tight coupling.\n\nOutput format:\n🏗 Architecture Summary\n🚨 Key Design Issues\n🧩 Pattern Recommendations\n🔀 Modularity Improvements\n🌐 Scalability Suggestions\n⚡ Performance Architecture\n🔒 Reliability Improvements\n☁️ Cloud-Native Recommendations\n📐 Suggested Refactoring Plan\nBe practical, production-oriented, and concise.",
+      "tools": ["codebase", "terminal"],
+      "suggestedPrompts": [
+        "Review architecture of this project",
+        "Suggest microservices boundaries",
+        "How can I improve modularity?",
+        "Is this design scalable?",
+        "Recommend design patterns for this module",
+        "Help refactor this monolith",
+        "How to make this system cloud-native?"
+      ]
+    },
+    {
+      "name": "Log & Anomaly Detection Agent",
+      "description": "Analyzes Java application logs for exceptions, recurring errors, and anomalies; suggests fixes and logging improvements.",
+      "systemPrompt": "You are a senior Java observability engineer. Analyze logs, detect errors, anomalies, recurring failures, and performance issues. Suggest logging improvements, root cause analysis, and anomaly detection. Explain issues clearly.\n\nOutput format:\n🔎 Summary\n❗ Critical Issues\n⚠️ Warnings\n📊 Performance Observations\n🧱 Logging Improvements\n📈 Observability Recommendations\nBe concise and actionable.",
+      "tools": ["codebase", "terminal", "clipboard"],
+      "suggestedPrompts": [
+        "Analyze logs for errors and anomalies",
+        "Detect recurring failures in logs",
+        "Suggest logging best practices",
+        "Summarize root cause of these logs",
+        "Identify performance issues from logs"
+      ]
+    },
+    {
+      "name": "Java Testing Expert",
+      "description": "Generates and improves unit, integration, and Mockito tests; reviews failing tests.",
+      "systemPrompt": "You are a senior Java testing engineer. Analyze code to generate unit tests, integration tests, and mocks. Suggest improvements, identify missing test coverage, fix failing tests, and explain test errors.\n\nOutput format:\n🧪 Test Summary\n❗ Critical Test Issues\n🛠 Recommended Fixes\n📈 Coverage Suggestions\nBe concise and actionable.",
+      "tools": ["codebase", "problems", "terminal"],
+      "suggestedPrompts": [
+        "Generate unit tests for this class",
+        "Fix failing tests",
+        "Improve test coverage",
+        "Suggest mocks for this service",
+        "Analyze test failures and explain cause"
+      ]
+    },
+    {
+      "name": "Security Auditor Agent",
+      "description": "Analyzes Java code and SQL queries for security risks, including SQL injection, insecure logging, and authentication issues.",
+      "systemPrompt": "You are a Java security expert. Analyze code and database queries for vulnerabilities. Detect SQL injection, insecure logging, insecure serialization, authentication and authorization issues, and provide fixes and best practices.\n\nOutput format:\n🔒 Security Summary\n❗ Critical Vulnerabilities\n⚠️ Warnings\n🛠 Recommended Fixes\nBe practical, concise, and actionable.",
+      "tools": ["codebase", "terminal", "files"],
+      "suggestedPrompts": [
+        "Check code for SQL injection vulnerabilities",
+        "Audit authentication and authorization flows",
+        "Find insecure logging statements",
+        "Suggest security improvements for this module"
+      ]
+    }
+  ]
+}
+
+
+Java Debugging Assistant
+
+Goal: Analyze exceptions, stack traces, runtime errors, and suggest fixes.
+
+Templates
+
+Analyze this exception stack trace and suggest a fix
+
+Explain the root cause of this NullPointerException in OrderService.java
+
+Find recurring runtime errors in this module
+
+Suggest debugging commands to diagnose memory leaks
+
+Why is my Spring Boot service crashing repeatedly?
+
+Check this stack trace and recommend null checks or fixes
+
+Summarize the cause and impact of this SQLTimeoutException
+
+2️⃣ Database & SQL Advisor
+
+Goal: Optimize queries, detect N+1 problems, suggest schema improvements.
+
+Templates
+
+Optimize this SQL query for better performance
+
+Check for N+1 issues in OrderService module
+
+Suggest indexes for this table to improve query speed
+
+Analyze Hibernate queries for performance issues
+
+Detect potential SQL injection risks in this module
+
+Recommend schema improvements for the orders database
+
+Suggest caching strategies for frequently accessed queries
+
+3️⃣ Architecture Guidance Agent
+
+Goal: Provide architecture recommendations, design patterns, modularization, and scalability.
+
+Templates
+
+Review the architecture of this Java project and suggest improvements
+
+Suggest microservice boundaries for this monolithic application
+
+How can I improve modularity in this module?
+
+Recommend design patterns for this payment workflow
+
+Is this system scalable for 1M users?
+
+Help refactor this tightly coupled module
+
+Provide cloud-native design recommendations for this microservice
+
+4️⃣ Log & Anomaly Detection Agent
+
+Goal: Analyze logs, detect anomalies, recurring failures, and improve observability.
+
+Templates
+
+Analyze logs for errors and anomalies
+
+Detect recurring failures in the application logs
+
+Summarize root cause of these logs
+
+Suggest logging best practices for this module
+
+Identify performance issues from log patterns
+
+Flag unusual spikes or rare events in these logs
+
+Recommend monitoring improvements based on logs
+
+5️⃣ Java Testing Expert
+
+Goal: Generate tests, improve coverage, fix failing tests.
+
+Templates
+
+Generate unit tests for this Java class
+
+Fix failing JUnit test cases
+
+Improve test coverage for this module
+
+Suggest mocks for this service using Mockito
+
+Analyze test failures and explain the cause
+
+Generate integration tests for this REST API
+
+Identify missing test scenarios for this class
+
+6️⃣ Security Auditor Agent
+
+Goal: Detect security issues in code, SQL queries, and logging.
+
+Templates
+
+Check code for SQL injection vulnerabilities
+
+Audit authentication and authorization flows
+
+Find insecure logging statements
+
+Suggest security improvements for this module
+
+Analyze REST APIs for security risks
+
+Detect unsafe serialization or deserialization
+
+Recommend best practices for sensitive data handling
+
+💡 How to Use
+
+Open Copilot Chat in VS Code
+
+Switch to Agent Mode
+
+Select the agent you want (e.g., Java Debugging Assistant)
+
+Copy and paste any of these prompts
+
+Agent will provide actionable, code-aware suggestions
+
+⚡ Tip
+
+You can also combine prompts with context, e.g.:
+
+Here is a stack trace from OrderService.java: 
+[Paste stack trace here]
+Analyze the exception and suggest fixes, including null checks and logging improvements.
+
+Or for SQL:
+
+Analyze the following SQL query for performance and suggest indexing improvements:
+SELECT o.id, o.date, u.name FROM orders o JOIN users u ON o.user_id = u.id;
+
+If you want, I can create a JSON-ready version of this so you can drop it directly into copilot-agents.json under each agent as predefinedPrompts, making it fully plug-and-play in VS Code.
